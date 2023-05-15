@@ -1,3 +1,4 @@
+import 'package:agrosellapp/screens/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:agrosellapp/screens/sidebar.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -10,8 +11,7 @@ class HomeScreens extends StatefulWidget {
 
 class _HomeScreensState extends State<HomeScreens> {
   static List<Widget> _widgetOptions = <Widget>[
-    // HomePage(),
-    FarmerLogin(),
+    HomePage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -30,17 +30,20 @@ class _HomeScreensState extends State<HomeScreens> {
             }),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.search, color: Colors.white),
-              onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => FarmerLogin()));
-              }),
+            icon: Icon(Icons.search, color: Colors.white),
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: CustomSearchDelegate(),
+              );
+            },
+          ),
         ],
       ),
       bottomNavigationBar: Container(
         color: Colors.green,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
           child: GNav(
             backgroundColor: Colors.green,
             color: Colors.white,
@@ -67,7 +70,6 @@ class _HomeScreensState extends State<HomeScreens> {
               GButton(
                 icon: Icons.person,
                 text: 'Farmer',
-                // onPressed: Navigator.push(context, MaterialPageRoute()),
               ),
             ],
           ),

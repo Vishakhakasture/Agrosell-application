@@ -1,15 +1,17 @@
+import 'package:agrosellapp/farmer/farmersign.dart';
+import 'package:agrosellapp/farmer/product.dart';
 import 'package:agrosellapp/screens.dart';
-import 'package:agrosellapp/user/signup.dart';
+import 'package:agrosellapp/customer/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class LoginInPage extends StatefulWidget {
+class FarmerLogIn extends StatefulWidget {
   @override
-  _LoginInState createState() => _LoginInState();
+  _FarmerLogInState createState() => _FarmerLogInState();
 }
 
-class _LoginInState extends State<LoginInPage> {
+class _FarmerLogInState extends State<FarmerLogIn> {
   var _formkey = GlobalKey<FormState>();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
@@ -26,7 +28,7 @@ class _LoginInState extends State<LoginInPage> {
             Fluttertoast.showToast(msg: "user not found");
           } else {
             Navigator.push(
-                context, MaterialPageRoute(builder: (_) => HomeScreens()));
+                context, MaterialPageRoute(builder: (_) => ProductInfo()));
           }
         },
       );
@@ -51,12 +53,17 @@ class _LoginInState extends State<LoginInPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-                width: 200,
-                height: 150,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(50.0)),
-                child: Image.asset('assets/img/image.jpg')),
+              width: 200,
+              height: 150,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                    "https://www.greenbiz.com/sites/default/files/images/articles/featured/rowcrop.jpg",
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
             Container(
               child: Text(
                 'Welcome to AgroSell',
@@ -79,7 +86,7 @@ class _LoginInState extends State<LoginInPage> {
                     cursorColor: Colors.black,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                        labelText: 'Email',
+                        // labelText: 'Email',
                         hintText: 'Enter email',
                         prefixIcon: Icon(
                           Icons.email,
@@ -101,7 +108,7 @@ class _LoginInState extends State<LoginInPage> {
                     cursorColor: Colors.black,
                     obscureText: true,
                     decoration: InputDecoration(
-                        labelText: 'Password',
+                        // labelText: 'Password',
                         hintText: 'Enter password',
                         prefixIcon: Icon(Icons.password, color: Colors.black),
                         focusedBorder: OutlineInputBorder(
@@ -131,28 +138,17 @@ class _LoginInState extends State<LoginInPage> {
                   SizedBox(
                     height: 15,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15.0, vertical: 10.0),
-                    child: GestureDetector(
-                      onTap: loginuser,
-                      child: Container(
-                        padding: EdgeInsets.all(30),
-                        decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Center(
-                          child: Text(
-                            "Login",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
-                      ),
+                  MaterialButton(
+                    minWidth: double.infinity,
+                    onPressed: () {
+                      loginuser();
+                    },
+                    child: Text(
+                      'Login',
+                      style: TextStyle(fontSize: 20),
                     ),
+                    color: Colors.green,
+                    textColor: Colors.white,
                   ),
                   SizedBox(
                     height: 15,
@@ -166,8 +162,10 @@ class _LoginInState extends State<LoginInPage> {
                           style: TextStyle(color: Colors.green, fontSize: 15),
                         ),
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => SignInPage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => FarmerSignIn()));
                         },
                       ),
                     ],

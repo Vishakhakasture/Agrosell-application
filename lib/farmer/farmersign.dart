@@ -1,23 +1,27 @@
+import 'package:agrosellapp/customer/login.dart';
+import 'package:agrosellapp/farmer/farmer.dart';
+import 'package:agrosellapp/farmer/product.dart';
 import 'package:agrosellapp/screens.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'login.dart';
+import 'farmerlogin.dart';
 
-class SignInPage extends StatefulWidget {
+class FarmerSignIn extends StatefulWidget {
   @override
-  _SignInState createState() => _SignInState();
+  _FarmerSignInState createState() => _FarmerSignInState();
 }
 
-class _SignInState extends State<SignInPage> {
+class _FarmerSignInState extends State<FarmerSignIn> {
   var _formkey = GlobalKey<FormState>();
 
   var nameController = TextEditingController();
   var mobileController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+  var addressController = TextEditingController();
 
   Createuser() async {
     try {
@@ -27,11 +31,15 @@ class _SignInState extends State<SignInPage> {
               password: passwordController.text.trim())
           .then((value) => {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => HomeScreens()))
+                    context, MaterialPageRoute(builder: (_) => Farmer()))
               });
 
-      addUserDetails(nameController.text.trim(), emailController.text.trim(),
-          mobileController.text.trim(), passwordController.text.trim());
+      addUserDetails(
+          nameController.text.trim(),
+          emailController.text.trim(),
+          mobileController.text.trim(),
+          passwordController.text.trim(),
+          addressController.text.trim());
     } on FirebaseAuthException catch (e) {
       if (e.code == "weak-password") {
         Fluttertoast.showToast(msg: "password is weak");
@@ -41,17 +49,18 @@ class _SignInState extends State<SignInPage> {
     }
   }
 
-  Future addUserDetails(
-      String name, String email, String number, String password) async {
+  Future addUserDetails(String name, String email, String number,
+      String password, String address) async {
     var db = FirebaseFirestore.instance;
-    var userr = db.collection("users");
+    var farmer = db.collection("Farmers");
     final data1 = <String, dynamic>{
       "Name": name,
       "Email": email,
       "Number": number,
       "password": password,
+      "Address": address,
     };
-    userr.doc(email).set(data1);
+    farmer.doc(email).set(data1);
   }
 
   @override
@@ -66,12 +75,17 @@ class _SignInState extends State<SignInPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-                width: 200,
-                height: 150,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(50.0)),
-                child: Image.asset('assets/img/image.jpg')),
+              width: 200,
+              height: 150,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                    "https://www.greenbiz.com/sites/default/files/images/articles/featured/rowcrop.jpg",
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
             Container(
               child: Text(
                 'Register to AgroSell',
@@ -94,7 +108,7 @@ class _SignInState extends State<SignInPage> {
                     cursorColor: Colors.black,
                     keyboardType: TextInputType.name,
                     decoration: InputDecoration(
-                        labelText: 'Name',
+                        // labelText: 'Name',
                         hintText: 'Enter name',
                         prefixIcon: Icon(Icons.person, color: Colors.black),
                         focusedBorder: OutlineInputBorder(
@@ -113,7 +127,7 @@ class _SignInState extends State<SignInPage> {
                     cursorColor: Colors.black,
                     keyboardType: TextInputType.name,
                     decoration: InputDecoration(
-                        labelText: 'Mobile',
+                        // labelText: 'Mobile',
                         hintText: 'Enter Mobile',
                         prefixIcon: Icon(Icons.phone, color: Colors.black),
                         focusedBorder: OutlineInputBorder(
@@ -128,11 +142,30 @@ class _SignInState extends State<SignInPage> {
                     height: 20,
                   ),
                   TextFormField(
+                    controller: addressController,
+                    cursorColor: Colors.black,
+                    keyboardType: TextInputType.name,
+                    decoration: InputDecoration(
+                        // labelText: 'Mobile',
+                        hintText: 'Enter address',
+                        prefixIcon: Icon(Icons.directions, color: Colors.black),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.green),
+                            borderRadius: BorderRadius.circular(10))),
+                    onChanged: (String value) {},
+                    validator: (value) {
+                      return value!.isEmpty ? 'Please enter address' : null;
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
                     controller: emailController,
                     cursorColor: Colors.black,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                        labelText: 'Email',
+                        // labelText: 'Email',
                         hintText: 'Enter valid email',
                         prefixIcon: Icon(Icons.email, color: Colors.black),
                         focusedBorder: OutlineInputBorder(
@@ -151,7 +184,7 @@ class _SignInState extends State<SignInPage> {
                     cursorColor: Colors.black,
                     obscureText: true,
                     decoration: InputDecoration(
-                        labelText: 'Password',
+                        // labelText: 'Password',
                         hintText: 'Enter strong password',
                         prefixIcon: Icon(Icons.password, color: Colors.black),
                         focusedBorder: OutlineInputBorder(
@@ -190,7 +223,7 @@ class _SignInState extends State<SignInPage> {
                         ),
                         onPressed: () {
                           Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => LoginInPage()));
+                              MaterialPageRoute(builder: (_) => FarmerLogIn()));
                         },
                       )
                     ],

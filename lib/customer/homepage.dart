@@ -5,8 +5,8 @@ import 'package:agrosellapp/size_utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:agrosellapp/farmer/sidebar.dart';
-import 'custom_image_view.dart';
-import 'image_constant.dart';
+import '../custom_image_view.dart';
+import '../image_constant.dart';
 
 class HomeScreens extends StatefulWidget {
   @override

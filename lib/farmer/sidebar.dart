@@ -34,42 +34,66 @@ class SideBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.home),
             title: Text("Home"),
-            onTap: () => HomeScreens(),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreens()));
+            },
           ),
           ListTile(
             leading: Icon(Icons.production_quantity_limits),
             title: Text("Products"),
-            onTap: () => HomeScreens(),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreens()));
+            },
           ),
           ListTile(
             leading: Icon(Icons.people),
             title: Text("Customers"),
-            onTap: () => HomeScreens(),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreens()));
+            },
           ),
           ListTile(
             leading: Icon(Icons.share),
             title: Text("Share"),
-            onTap: () => HomeScreens(),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreens()));
+            },
           ),
           ListTile(
             leading: Icon(Icons.favorite),
             title: Text("Favorites"),
-            onTap: () => HomeScreens(),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreens()));
+            },
           ),
           ListTile(
             leading: Icon(Icons.notifications),
             title: Text("Notification"),
-            onTap: () => HomeScreens(),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreens()));
+            },
           ),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text("Setting"),
-            onTap: () => HomeScreens(),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreens()));
+            },
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text("Exit"),
-            onTap: () => HomeScreens(),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreens()));
+            },
           ),
         ],
       ),

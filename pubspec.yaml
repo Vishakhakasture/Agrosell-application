@@ -37,6 +37,18 @@ dependencies:
   get: ^4.6.5
   fluttertoast: ^8.2.1
   cloud_firestore: ^4.4.5
+  font_awesome_flutter: ^10.4.0
+  shared_preferences: ^2.1.1
+  cached_network_image: ^3.2.3
+  flutter_svg: ^2.0.5
+  iconsax: ^0.0.8
+  ionicons: ^0.2.2
+  firebase_core: ^2.13.0
+  image_picker: ^0.8.7+5
+  firebase_storage: ^11.2.1
+  permission_handler: ^10.2.0
+  snackbar: ^1.0.2
+  firebase_app_check: ^0.1.4+2
 
 dev_dependencies:
   flutter_test:
@@ -57,13 +69,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/img/image.jpg
-    - assets/img/vege.jpg
-    - assets/img/fruits.jpg
-    - assets/img/grain.png
-    - assets/img/flower.jpg
-    - assets/img/hortilculture.jpg
-    - assets/img/signin.jpg
+    - assets/images/
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,7 +1,9 @@
-import 'package:agrosellapp/user/login.dart';
+import 'package:agrosellapp/customer/login.dart';
+import 'package:agrosellapp/user.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
+import 'customer/productinfo.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -19,7 +21,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginInPage(),
+      // home: User(),
+      // home: ProductInfo(),
+      home: product_details(),
     );
   }
 }

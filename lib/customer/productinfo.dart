@@ -37,22 +37,22 @@ class product_details extends StatelessWidget {
                                           .data() as Map<String, dynamic>;
                                       return Padding(
                                         padding: getPadding(left: 5, top: 10),
-                                        child: Stack(children: [
-                                          InkWell(
-                                            child: Container(
-                                              height: 190,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                child: Image(
-                                                  image: NetworkImage(
-                                                      data['profileURL']),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ]),
+                                        // child: Stack(children: [
+                                        //   InkWell(
+                                        //     child: Container(
+                                        //       height: 190,
+                                        //       child: ClipRRect(
+                                        //         borderRadius:
+                                        //             BorderRadius.circular(10),
+                                        //         child: Image(
+                                        //           image: NetworkImage(
+                                        //               data['profileURL']),
+                                        //           fit: BoxFit.cover,
+                                        //         ),
+                                        //       ),
+                                        //     ),
+                                        //   ),
+                                        // ]),
                                         child: Container(
                                           width: 170,
                                           child: Align(

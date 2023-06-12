@@ -1,3 +1,4 @@
+import 'package:agrosellapp/customer/productinfo.dart';
 import 'package:agrosellapp/screens/Message.dart';
 import 'package:agrosellapp/customer/cart.dart';
 import 'package:agrosellapp/farmer/farmer.dart';
@@ -85,10 +86,10 @@ class _HomeScreensState extends State<HomeScreens> {
                                                 //       context,
                                                 //       MaterialPageRoute(
                                                 //         builder: (context) =>
-                                                //             // doctorData(
-                                                //             //     email: data[
-                                                //             //         'name']),
-                                                //       // )
+                                                //             product_details(
+                                                //                 email: data[
+                                                //                     'Name']),
+                                                //       )
                                                 // );
                                                 // },
                                                 child: Container(
@@ -395,7 +396,7 @@ class _HomeScreensState extends State<HomeScreens> {
                 child: InkWell(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MessageScreen()));
+                        builder: (context) => product_details()));
                   },
                   child: Container(
                     child: CustomImageView(
